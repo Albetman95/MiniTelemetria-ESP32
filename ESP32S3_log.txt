@@ -1,0 +1,136 @@
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+PS C:\Users\albet\MiniTelemetria-ESP32S3> & 'c:\Users\albet\.vscode\extensions\espressif.esp-idf-extension-1.10.2\export.ps1'
+PS C:\Users\albet\MiniTelemetria-ESP32S3> idf.py build
+Executing action: all (aliases: build)
+Running ninja in directory C:\Users\albet\MiniTelemetria-ESP32S3\build
+Executing "ninja all"...
+[1/4] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\albet\MiniTelemetria-ESP32S3\bui...ion-table.bin C:/Users/albet/MiniTelemetria-ESP32S3/build/MiniTelemetria-ESP32S3.bin" 
+MiniTelemetria-ESP32S3.bin binary size 0x32f40 bytes. Smallest app partition is 0x100000 bytes. 0xcd0c0 bytes (80%) free.
+[1/1] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\albet\MiniTelemetria-ESP32S3\bui...bootloader 0x0 C:/Users/albet/MiniTelemetria-ESP32S3/build/bootloader/bootloader.bin" 
+Bootloader binary size 0x5240 bytes. 0x2dc0 bytes (36%) free.
+[4/4] Completed 'bootloader'
+Project build complete. To flash, run:
+ idf.py flash
+or
+ idf.py -p PORT flash
+or
+ python -m esptool --chip esp32s3 -b 460800 --before default_reset --after hard_reset write_flash --flash_mode dio --flash_size 2MB --flash_freq 80m 0x0 build\bootloader\bootloader.bin 0x8000 build\partition_table\partition-table.bin 0x10000 build\MiniTelemetria-ESP32S3.bin
+or from the "C:\Users\albet\MiniTelemetria-ESP32S3\build" directory
+ python -m esptool --chip esp32s3 -b 460800 --before default_reset --after hard_reset write_flash "@flash_args"
+PS C:\Users\albet\MiniTelemetria-ESP32S3> idf.py -p COM8 flash monitor
+Executing action: flash
+Running ninja in directory C:\Users\albet\MiniTelemetria-ESP32S3\build
+Executing "ninja flash"...
+[1/5] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\albet\MiniTelemetria-ESP32S3\bui...ion-table.bin C:/Users/albet/MiniTelemetria-ESP32S3/build/MiniTelemetria-ESP32S3.bin" 
+MiniTelemetria-ESP32S3.bin binary size 0x32f40 bytes. Smallest app partition is 0x100000 bytes. 0xcd0c0 bytes (80%) free.
+[1/1] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\albet\MiniTelemetria-ESP32S3\bui...bootloader 0x0 C:/Users/albet/MiniTelemetria-ESP32S3/build/bootloader/bootloader.bin" 
+Bootloader binary size 0x5240 bytes. 0x2dc0 bytes (36%) free.
+[4/5] C:\Windows\system32\cmd.exe /C "cd /D C:\Users\albet\esp\v5.5.1\esp-idf\compone...ild -P C:/Users/albet/esp/v5.5.1/esp-idf/components/esptool_py/run_serial_tool.cmake" 
+esptool.py --chip esp32s3 -p COM8 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 MiniTelemetria-ESP32S3.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.11.dev1
+Serial port COM8
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: 30:ed:a0:b8:d8:20
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x00042fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 21056 bytes to 13388...
+Writing at 0x00000000... (100 %)
+Wrote 21056 bytes (13388 compressed) at 0x00000000 in 0.6 seconds (effective 266.0 kbit/s)...
+Hash of data verified.
+Compressed 208704 bytes to 111040...
+Writing at 0x00010000... (14 %)
+Writing at 0x0001ca6b... (28 %)
+Writing at 0x00022ae6... (42 %)
+Writing at 0x00029573... (57 %)
+Writing at 0x000302d1... (71 %)
+Writing at 0x0003796b... (85 %)
+Writing at 0x0003dcaf... (100 %)
+Wrote 208704 bytes (111040 compressed) at 0x00010000 in 2.8 seconds (effective 590.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 453.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+Executing action: monitor
+Running idf_monitor in directory C:\Users\albet\MiniTelemetria-ESP32S3
+Executing "C:\Users\albet\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Users\albet\esp\v5.5.1\esp-idf\tools/idf_monitor.py -p COM8 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 C:\Users\albet\MiniTelemetria-ESP32S3\build\MiniTelemetria-ESP32S3.elf C:\Users\albet\MiniTelemetria-ESP32S3\build\bootloader\bootloader.elf --force-color -m 'C:\Users\albet\.espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Users\albet\esp\v5.5.1\esp-idf\tools\idf.py' '-p' 'COM8'"...
+--- Warning: GDB cannot open serial ports accessed as COMx
+--- Using \\.\COM8 instead...
+--- esp-idf-monitor 1.8.0 on \\.\COM8 115200
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x158c
+load:0x403c8700,len:0xd24
+--- 0x403c8700: _stext at ??:?
+load:0x403cb700,len:0x2f34
+entry 0x403c8924
+--- 0x403c8924: call_start_cpu0 at C:/Users/albet/esp/v5.5.1/esp-idf/components/bootloader/subproject/main/bootloader_start.c:25
+I (24) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (25) boot: compile time Dec  7 2025 01:23:01
+I (25) boot: Multicore bootloader
+I (25) boot: chip revision: v0.2
+I (28) boot: efuse block revision: v1.3
+I (31) boot.esp32s3: Boot SPI Speed : 80MHz
+I (35) boot.esp32s3: SPI Mode       : DIO
+I (39) boot.esp32s3: SPI Flash Size : 2MB
+I (43) boot: Enabling RNG early entropy source...
+I (47) boot: Partition Table:
+I (50) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (63) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (69) boot:  2 factory          factory app      00 00 00010000 00100000
+I (76) boot: End of partition table
+I (79) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0a4b0h ( 42160) map
+I (94) esp_image: segment 1: paddr=0001a4d8 vaddr=3fc92500 size=02ae8h ( 10984) load
+I (96) esp_image: segment 2: paddr=0001cfc8 vaddr=40374000 size=03050h ( 12368) load
+I (104) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=17ab0h ( 96944) map
+I (126) esp_image: segment 4: paddr=00037ad8 vaddr=40377050 size=0b418h ( 46104) load
+I (136) esp_image: segment 5: paddr=00042ef8 vaddr=50000000 size=00020h (    32) load
+I (142) boot: Loaded app from partition at offset 0x10000
+I (142) boot: Disabling RNG early entropy source...
+I (154) cpu_start: Multicore app
+I (163) cpu_start: Pro cpu start user code
+I (163) cpu_start: cpu freq: 160000000 Hz
+I (163) app_init: Application information:
+I (163) app_init: Project name:     MiniTelemetria-ESP32S3
+I (168) app_init: App version:      1
+I (172) app_init: Compile time:     Dec  7 2025 01:21:39
+I (177) app_init: ELF file SHA256:  b649a3098...
+I (181) app_init: ESP-IDF:          v5.5.1
+I (185) efuse_init: Min chip rev:     v0.0
+I (189) efuse_init: Max chip rev:     v0.99 
+I (193) efuse_init: Chip rev:         v0.2
+I (196) heap_init: Initializing. RAM available for dynamic allocation:
+I (203) heap_init: At 3FC958B8 len 00053E58 (335 KiB): RAM
+I (208) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (213) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (218) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (225) spi_flash: detected chip: boya
+I (227) spi_flash: flash io: dio
+W (230) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.
+I (242) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (249) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (256) main_task: Started on CPU0
+I (276) main_task: Calling app_main()
+Mini Telemetria ESP32 S3 - Boot OK
+Version FW v0.1.0
+Marcos Albetman
+I (276) main_task: Returned from app_main()
