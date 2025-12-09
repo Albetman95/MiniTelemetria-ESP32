@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include "esp_log.h"
 #include "uart_console.h"
 
-const char *TAG = "BOOT";
+static const char *TAG = "UART_CONSOLE";
 
 void uart_console_init(void)
 {
-    ESP_LOGI(TAG," UART, console init");
+    ESP_LOGI(TAG,"init OK");
 }
